@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+        <title>Sign-in sign-up </title>
+        <link rel="stylesheet" href="./login.css">
+        <link rel="icon" href="./image/imageCairo/login.png" type="image/icon type">
+  </head>
+<body>
+    <div class="container">
+        <div class="main">      
+            <input type="checkbox" id="chk" >
+            <div class="login">
+                <form class="form" action="Login.php" method="post">
+                    <label for="chk" >Sign in</label>
+                    <input class="input" type="email" name="email" placeholder="Email" >
+                    <input class="input" type="password" name="password" placeholder="Password" >
+                        <a class="lol" href='ForgetPassword.php'>Forgot password?</a>
+                    <button type="submit" name="SignIn">Sign in</button>
+                </form>
+            </div>
+
+            <div class="register">
+                <form class="form" action="Register.php" method="post">
+                    <label for="chk" >Sign Up</label>
+                    <input class="input" type="text" name="username" placeholder="Username" >
+                    <input class="input" type="email" name="email" placeholder="Email" >
+                    <input class="input" type="password" name="password" placeholder="Password" >
+                    <button type="submit" name="SignUp">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>

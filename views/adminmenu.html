@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="icon" href="../admin.png" type="image/icon type">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --main-color: #443;
+    --border-radius: 95% 4% 97% 5% / 4% 94% 3% 95%;
+    --border-radius-hover: 4% 95% 6% 95% / 95% 4% 92% 5%;
+    --border: .2rem solid var(--main-color);
+    --border-hover: .2rem dashed var(--main-color);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+    background-color: #F5E4D7;
+}
+
+section {
+    padding: 2  rem 9%;
+}
+
+.heading {
+    font-size: 9rem;
+    text-transform: uppercase;
+    color: transparent;
+    letter-spacing: .2rem;
+    text-align: center;
+    pointer-events: none;
+    position: relative;
+}
+.menu .heading {
+
+color: white;
+}
+
+.heading span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color:var(--main-color);
+    font-size: 3rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: .9rem 1.5rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    color: var(--main-color);
+    background: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1.7rem;
+}
+
+.btn:hover {
+    border-radius: var(--border-radius-hover);
+    border: var(--border-hover);
+}
+        .menu {
+    background: url(../image/menu-bg.jpg) no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.menu .box-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.menu .box-container .box {
+    flex: 1 1 42rem;
+    padding: 2rem;
+    border: var(--border);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-left: 6rem;
+}
+
+.menu .box-container .box:hover {
+    border: var(--border-hover);
+    border-radius: var(--border-radius-hover);
+}
+
+.menu .box-container .box img {
+    height: 8rem;
+    margin-left: -6rem;
+}
+
+.menu .box-container .box .content h3 {
+    font-size: 2.2rem;
+    color: var(--main-color);
+    line-height: 1.8;
+}
+
+.menu .box-container .box .content p {
+    font-size: 1.6rem;
+    color: var(--main-color);
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.menu .box-container .box .content span {
+    font-size: 2rem;
+    color: var(--main-color);
+    line-height: 1.8;
+}
+
+.box .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.add-to-cart {
+    align-self: flex-end; 
+    color: #000000; 
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    border: 2px solid #000; 
+    border-radius: var(--border-radius);
+}
+.view-nutritional-info {
+    align-self: flex-end; 
+    color: #000000; 
+    padding: 10px 20px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    border: 2px solid #000; 
+    border-radius: var(--border-radius);
+}
+
+    </style>
+</head>
+<body>
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <a href="./locateView.html" id="back" class="btn">Back</a>
+          </div>
+        <h1 class="heading">our menu <span>popular menu</span></h1>
+
+        <div class="box-container">
+            <a href="#" class="box">
+                <img src="../image/menu-1.png" alt="">
+                <div class="content">
+                    <h3>Caffeinated Canvas Signature Latte</h3>
+                    <p>Indulge your senses with our masterpiece, the Caffeinated Canvas Signature Latte.
+                         Crafted with precision and passion, it's not just a coffee; it's an experience</p>
+                    <span>€10.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€10.99" data-name="Caffeinated Canvas Signature Latte">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-1">View Nutritional Info</button>
+
+                </div>
+                
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/menu-2.png" alt="">
+                <div class="content">
+                    <h3>Decadent Mocha </h3>
+                    <p>Elevate your coffee experience with our Artisan Mocha at Caffeinated Canvas.
+                     Crafted with care and creativity, it's not just a beverage; it's a masterpiece in a cup.</p>
+                    <span> €12.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€12.99" data-name="Decadent Mocha">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-2">View Nutritional Info</button>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/menu-3.png" alt="">
+                <div class="content">
+                    <h3>Classic Cappuccino </h3>
+                    <p>Experience the epitome of coffee elegance with our Signature Cappuccino at Caffeinated Canvas.
+                     Crafted with precision and passion, it's not just a beverage; it's a masterpiece of flavor and finesse.</p>
+                    <span>€9.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€9.99" data-name="Classic Cappuccino">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-3">View Nutritional Info</button>
+
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/menu-4.png" alt="">
+                <div class="content">
+                    <h3>Hot Chocolate</h3>
+                    <p>Wrap yourself in the cozy embrace of our Signature Hot Chocolate, a decadent blend of premium cocoa and velvety milk.
+                        It's a comforting hug in a cup.</p>
+                    <span>€14.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€14.99" data-name="Hot Choccolate">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-4">View Nutritional Info</button>
+
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/menu-5.png" alt="">
+                <div class="content">
+                    <h3>Artisan Flat White</h3>
+                    <p>Discover the perfect balance of bold espresso and velvety milk with our Artisan Flat White. This sophisticated coffee classic 
+                        is a testament to simplicity and elegance, with a rich, creamy texture and a smooth, indulgent finish.</p>
+                    <span>€12.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€12.99" data-name="Artisan Flat White">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-5">View Nutritional Info</button>
+
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/menu-6.png" alt="">
+                <div class="content">
+                    <h3>Velvet Macchiato </h3>
+                    <p>Experience the perfect balance of boldness and subtlety with our Artisan Macchiato at Caffeinated Canvas.
+                         Crafted with precision and care, it's not just a coffee; it's a symphony of flavor in a cup.</p>
+                    <span>€10.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€10.99" data-name="Velvet Macchiato">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info" data-target="nutritional-info-popup-6">View Nutritional Info</button>
+                </div>
+            </a>
+        </div>
+    </section>
+     <!-- Pastry --> 
+    <section class="menu" id="pastry">
+        <h1 class="heading">Pastry <span>popular menu</span></h1>
+
+        <div class="box-container">
+            <a href="#" class="box">
+                <img src="../image/Bakery-Transparent.png" alt="A delightful Cookies">
+                <div class="content">
+                    <h3>Canvas Cookies</h3>
+                    <p>Indulge in a palette of flavors with our signature Canvas Cookies at Caffeinated Canvas.
+                     Each bite is a brushstroke of sweetness, handcrafted to perfection for a delightful treat 
+                     that pairs perfectly with your favorite cup of coffee.</p>
+                    <span>€4.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€4.99" data-name="Canvas Cookies">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info " class="view-nutritional-info" data-target="nutritional-info-popup-7">View Nutritional Info</button>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/Cup.png" alt="a delicious cupcake">
+                <div class="content">
+                    <h3>Canvas Cupcakes</h3>
+                    <p>Satisfy your sweet cravings with a touch of artistic flair at Caffeinated Canvas.
+                     Our Canvas Cupcakes are more than just desserts;
+                      they're miniature masterpieces crafted to delight your taste buds and ignite your imagination.</p>
+                    <span>€7.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€7.99" data-name="Canvas Cupcakes">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info "  class="view-nutritional-info" data-target="nutritional-info-popup-8">View Nutritional Info</button>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/tarte.png" alt="a delicious tart">
+                <div class="content">
+                    <h3>Canvas Tarte </h3>
+                    <p>Elevate your dessert experience with our delectable Canvas Tart at Caffeinated Canvas. 
+                    Handcrafted with precision and passion, each bite is a journey of flavor and elegance that's sure to captivate your senses.</p>
+                    <span>€10.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€10.99" data-name="Canvas Tarte">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info"  class="view-nutritional-info" data-target="nutritional-info-popup-9">View Nutritional Info</button>
+
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/Cheesecake.png" alt="Cheesecake">
+                <div class="content">
+                    <h3>Canvas Cheesecake:</h3>
+                    <p>Experience a taste of indulgence with our decadent Canvas Cheesecake at Caffeinated Canvas.
+                     Crafted with care and expertise, 
+                     each slice is a symphony of creamy richness and heavenly flavors that will leave you craving more.</p>
+                    <span>€12.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€12.99" data-name="Canvas Cheesecake">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info add-to-cart"  class="view-nutritional-info" data-target="nutritional-info-popup-10">View Nutritional Info</button>
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/Crepe.png" alt="Crepe">
+                <div class="content">
+                    <h3>Canvas Crepe</h3>
+                    <p>Embark on a journey of culinary delight with our exquisite Canvas Crepe at Caffeinated Canvas.
+                         Handcrafted with precision and passion,
+                         each crepe is a delicate masterpiece that will transport your taste buds to the streets of Paris.</p>
+                    <span>€19.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€19.99" data-name="Canvas Crepe">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info add-to-cart"  class="view-nutritional-info" data-target="nutritional-info-popup-11">View Nutritional Info</button>
+
+                </div>
+            </a>
+
+            <a href="#" class="box">
+                <img src="../image/Croissant-Transparent.png" alt="Croissant">
+                <div class="content">
+                    <h3>Canvas Croissant</h3>
+                    <p>Immerse yourself in the allure of French pastry with our Artisan Croissant at Caffeinated Canvas.
+                         Handcrafted with precision and passion, each bite is a celebration of flaky perfection and timeless elegance.</p>
+                    <span>€10.99</span>
+                    <button id="add-to-cart-button" class="add-to-cart" data-price="€10.99" data-name="Canvas Croissant" style=" justify-content: 100px;">Add to Cart</button>
+                    <button id="view-nutritional-info-button" class="view-nutritional-info add-to-cart"  class="view-nutritional-info" data-target="nutritional-info-popup-12">View Nutritional Info</button>
+                </div>
+            </a>
+        </div>
+    </section>
+</body>
+</html>

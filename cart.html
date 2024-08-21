@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link rel="icon" href="./image/imageCairo/shopping-cart-empty-side-view.png" type="image/icon type">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+    :root {
+      --main-color: #443;
+      --border-radius: 95% 4% 97% 5% / 4% 94% 3% 95%;
+      --border-radius-hover: 4% 95% 6% 95% / 95% 4% 92% 5%;
+      --border: .2rem solid var(--main-color);
+      --border-hover: .2rem dashed var(--main-color);
+    }
+
+    * {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      outline: none;
+      border: none;
+      text-decoration: none;
+      text-transform: capitalize;
+      transition: all .2s linear;
+    }
+
+    html {
+      background-color: #F5E4D7;
+      background-image: url(./image/book-bg.jpg);
+      overflow-x: hidden;
+      scroll-padding-top: 7rem;
+      scroll-behavior: smooth;
+    }
+
+    h1 {
+      display: flex;
+      font-size: 50px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 50px;
+      padding: 10px;
+      border-bottom: 3px solid black;
+    }
+
+    .cart-item img {
+      width: 200px;
+      margin-right: 20px;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+    }
+
+    .delete-button {
+      margin-left: 10px;
+      padding: 5px 10px;
+      background-color: #433;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .total-price {
+      margin-top: 20px;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: right;
+    }
+
+    .btn-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: .9rem 1.5rem;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      color: var(--main-color);
+      background: none;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+
+    .btn:hover {
+      border-radius: var(--border-radius-hover);
+      border: var(--border-hover);
+      color: #f2e9e9;
+      background-color: var(--main-color);
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Cart</h1>
+  <div id="cartItems" class="cart-items"></div>
+  <div id="totalPrice" class="total-price">Total Price: $0.00</div>
+  <div class="btn-container">
+    <button id="checkoutButton" class="btn">Checkout</button>
+    <button id="resetButton" class="btn" style="margin-left: 10px;">Reset Cart</button>
+  </div>
+
+  <script>
+    // Display cart items from localStorage
+    function displayCart() {
+      if (typeof Storage !== "undefined") {
+        let cartItems = JSON.parse(localStorage.getItem("carts")) || [];
+        let cartList = document.getElementById("cartItems");
+        let totalPriceElement = document.getElementById("totalPrice");
+        let totalPrice = 0;
+
+        cartList.innerHTML = ""; // Clear the previous cart items
+
+        cartItems.forEach((item) => {
+          let cartItem = document.createElement("div");
+          cartItem.classList.add("cart-item");
+
+          let itemImage = document.createElement("img");
+          itemImage.src = item.imageUrl || "default-image-url.jpg";
+          itemImage.alt = item.name;
+          cartItem.appendChild(itemImage);
+
+          let itemDetails = document.createElement("div");
+          itemDetails.classList.add("cart-item-info");
+          itemDetails.innerHTML = `<h3>${item.name}</h3><p>Package: ${item.packageName}</p><p>Price: $${item.price.toFixed(2)}</p>`;
+          cartItem.appendChild(itemDetails);
+
+          let deleteButton = document.createElement("button");
+          deleteButton.classList.add("delete-button");
+          deleteButton.textContent = "Delete";
+          deleteButton.onclick = function () {
+            removeFromCart(item);
+            displayCart(); // Refresh cart items after deletion
+          };
+          cartItem.appendChild(deleteButton);
+
+          cartList.appendChild(cartItem);
+
+          totalPrice += item.price;
+        });
+
+        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+      } else {
+        alert("Your browser does not support localStorage. Please use a different browser.");
+      }
+    }
+
+    // Remove item from cart
+    function removeFromCart(item) {
+      let cartItems = JSON.parse(localStorage.getItem("carts")) || [];
+      let index = cartItems.findIndex(cartItem => cartItem.packageName === item.packageName);
+      if (index !== -1) {
+        cartItems.splice(index, 1);
+        localStorage.setItem("carts", JSON.stringify(cartItems));
+      }
+    }
+
+    // Reset the cart
+    document.getElementById("resetButton").addEventListener("click", function () {
+      localStorage.removeItem("carts");
+      displayCart(); // Refresh cart items after reset
+    });
+
+    // Handle checkout button click
+    document.getElementById("checkoutButton").addEventListener("click", function () {
+      let totalPrice = calculateTotalPrice(); 
+      let productNames = getProductNames();
+
+      sessionStorage.setItem("totalPrice", totalPrice);
+      sessionStorage.setItem("products", productNames);
+
+      window.location.href = "checkout.html"; // Redirect to the checkout page
+    });
+
+    // Calculate total price
+    function calculateTotalPrice() {
+      let totalPrice = 0;
+      let cartItems = JSON.parse(localStorage.getItem("carts")) || [];
+
+      cartItems.forEach((item) => {
+        totalPrice += item.price;
+      });
+
+      return totalPrice;
+    }
+
+    // Get product names
+    function getProductNames() {
+      let productNames = [];
+      let cartItems = JSON.parse(localStorage.getItem("carts")) || [];
+
+      cartItems.forEach((item) => {
+        productNames.push(item.name);
+      });
+
+      return productNames.join(", ");
+    }
+
+    // Initial call to display the cart
+    displayCart();
+  </script>
+</body>
+</html>

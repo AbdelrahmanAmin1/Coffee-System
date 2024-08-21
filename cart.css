@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+:root {
+    --main-color: #443;
+    --border-radius: 95% 4% 97% 5% / 4% 94% 3% 95%;
+    --border-radius-hover: 4% 95% 6% 95% / 95% 4% 92% 5%;
+    --border: .2rem solid var(--main-color);
+    --border-hover: .2rem dashed var(--main-color);
+}
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem; /* Adjust the margin-top as needed */
+  }
+
+  html {
+    overflow-x: hidden;
+    scroll-padding-top: 7rem;
+    scroll-behavior: smooth;
+    background-color: #F5E4D7;
+      }
+
+      h1 {
+        display: flex;
+        font-size: 50px;
+        justify-content: center;
+      }
+      th {
+        font-size: 30px;
+      }
+
+      button {
+      display: flex;
+      justify-content: center;
+
+      padding: .9rem 1.5rem;
+      border: var(--border);
+      border-radius: var(--border-radius);
+      color: var(--main-color);
+      background: none;
+      cursor: pointer;
+      margin-top:4rem;
+      font-size: 2rem;
+            }
+            #cart-items td:last-child,
+            #cart-total {
+                text-align: right;
+            }
+            #cart-total {
+              font-size: 30px;
+              font-weight: 900;
+            }
+            
+            .btn:hover {
+            
+                border-radius: var(--border-radius-hover);
+                border: var(--border-hover);
+                color: #f2e9e9; /* Add this line to change the text color on hover */
+                background-color: var(--main-color); /* Add this line to change the background color on hover */
+            }
+            
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 3px solid black;
+            }
+            
+            th {
+                height: 70px;
+            }
+            tfoot tr td {
+              background-color: aliceblue;
+              height: 70px;
+              font-size: 30px;
+              font-weight: 900;
+            }
+
+
+.cart-items {
+    margin-top: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.cart-item img {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+.total-price {
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+  
